@@ -32,4 +32,6 @@ go mod tidy
 go run .
 # Development
 make dev
+# update Docs </apidoc>
+make swag
 ```
