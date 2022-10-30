@@ -46,6 +46,7 @@ TODOS:
 - [X] makefile
 - [X] .env config
 - [X] api group section
+- [X] air LiveReload
 - [ ] JWT
 - [ ] /ws Websocket
 - [ ] embed statics file
