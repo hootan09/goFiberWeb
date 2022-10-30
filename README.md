@@ -35,3 +35,19 @@ make dev
 # update Docs </apidoc>
 make swag
 ```
+
+TODOS:
+
+- [X] Swagger
+- [X] sqlite3
+- [X] Api Endpoint
+- [X] Gorm
+- [X] models
+- [X] makefile
+- [X] .env config
+- [X] api group section
+- [ ] JWT
+- [ ] /ws Websocket
+- [ ] embed statics file
+- [ ] template Engine (.html)
+- [ ] workFlow(go Releaser)
