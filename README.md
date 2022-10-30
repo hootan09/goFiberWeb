@@ -1,4 +1,4 @@
-GoTicket
+GoV2Web
 
 #### Requirements:
 ```sh
