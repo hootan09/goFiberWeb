@@ -34,6 +34,9 @@ func setupRoutes(app *fiber.App) {
 	// Template Engine
 	web := app.Group("/")
 	web.Get("/", web_routes.Index_web)
+	web.Get("/login", web_routes.Login_web)
+	web.Post("/login", web_routes.Login_web_post)
+	web.Get("/logout", web_routes.Logout_web)
 
 	// Swagger routes
 	swag := app.Group("/apidoc")
