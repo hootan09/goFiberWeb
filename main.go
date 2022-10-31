@@ -22,6 +22,27 @@ import (
 //go:embed views/*
 var viewsfs embed.FS
 
+func main() {
+
+	// Define Fiber Config
+	config := configs.FiberConfig(viewsfs)
+	app := fiber.New(config)
+
+	dbErr := database.InitDatabase()
+	if dbErr != nil {
+		panic(dbErr)
+	}
+
+	app.Use(
+		// Add CORS to each route.
+		cors.New(),
+		// Add simple logger.
+		logger.New(),
+	)
+	setupRoutes(app)
+	app.Listen(os.Getenv("SERVER_URL"))
+}
+
 func setupRoutes(app *fiber.App) {
 
 	app.Static("/", "./views/public")
@@ -37,6 +58,11 @@ func setupRoutes(app *fiber.App) {
 	web.Get("/login", web_routes.Login_web)
 	web.Post("/login", web_routes.Login_web_post)
 	web.Get("/logout", web_routes.Logout_web)
+
+	web.Get("/widgets.html", web_routes.Widgets_web)
+	web.Get("/charts.html", web_routes.Charts_web)
+	web.Get("/elements.html", web_routes.Elements_web)
+	web.Get("/panels.html", web_routes.Panels_web)
 
 	// Swagger routes
 	swag := app.Group("/apidoc")
@@ -69,25 +95,4 @@ func setupRoutes(app *fiber.App) {
 			})
 		},
 	)
-}
-
-func main() {
-
-	// Define Fiber Config
-	config := configs.FiberConfig(viewsfs)
-	app := fiber.New(config)
-
-	dbErr := database.InitDatabase()
-	if dbErr != nil {
-		panic(dbErr)
-	}
-
-	app.Use(
-		// Add CORS to each route.
-		cors.New(),
-		// Add simple logger.
-		logger.New(),
-	)
-	setupRoutes(app)
-	app.Listen(os.Getenv("SERVER_URL"))
 }

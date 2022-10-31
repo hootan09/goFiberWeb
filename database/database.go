@@ -17,7 +17,6 @@ func InitDatabase() error {
 	}
 
 	db.AutoMigrate(&models.Users{})
-	db.AutoMigrate(&models.Admin{Username: "admin", Password: "admin"})
 	return nil
 }
 
