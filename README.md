@@ -38,17 +38,19 @@ make swag
 
 TODOS:
 
-- [X] Swagger
-- [X] sqlite3
-- [X] Api Endpoint
+- [X] Swagger automatic documention **$make swag**
+- [X] sqlite3 database
+- [X] Api & web endpoint routes
 - [X] Gorm
 - [X] models
 - [X] makefile
 - [X] .env config
-- [X] api group section
-- [X] air LiveReload
-- [ ] JWT
+- [X] api & web group section in main.go
+- [X] air livereload
+- [X] Template engine (.html)
+- [X] embed statics files
+- [ ] Cookie session for web auth 
+- [ ] JWT middleware & utils (generator)
+- [ ] validators
 - [ ] /ws Websocket
-- [ ] embed statics file
-- [ ] template Engine (.html)
-- [ ] workFlow(go Releaser)
+- [ ] workFlow (goReleaser)

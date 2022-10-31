@@ -24,6 +24,8 @@ var viewsfs embed.FS
 
 func setupRoutes(app *fiber.App) {
 
+	app.Static("/", "./views/public")
+
 	// Api routes
 	api := app.Group("/api/v1")
 	api.Get("/users", api_routes.GetAllUsers_api)
