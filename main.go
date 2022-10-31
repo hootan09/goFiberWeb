@@ -1,12 +1,16 @@
 package main
 
 import (
+	"embed"
 	"goV2Web/configs"
 	"goV2Web/database"
-	"goV2Web/routes"
+	api_routes "goV2Web/routes/api"
+	web_routes "goV2Web/routes/web"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 
 	_ "goV2Web/docs" // load API Docs files (Swagger)
 
@@ -15,19 +19,19 @@ import (
 	_ "github.com/joho/godotenv/autoload" // load .env file automatically
 )
 
-func status(c *fiber.Ctx) error {
-	return c.SendString("Server is running! Send your request")
-}
+//go:embed views/*
+var viewsfs embed.FS
 
 func setupRoutes(app *fiber.App) {
 
-	// Template Engine must goes here
-	app.Get("/", status)
-
 	// Api routes
 	api := app.Group("/api/v1")
-	api.Get("/users", routes.GetAllUsers)
-	api.Post("/user", routes.SaveUsers)
+	api.Get("/users", api_routes.GetAllUsers_api)
+	api.Post("/user", api_routes.SaveUsers_api)
+
+	// Template Engine
+	web := app.Group("/")
+	web.Get("/", web_routes.Index_web)
 
 	// Swagger routes
 	swag := app.Group("/apidoc")
@@ -65,8 +69,7 @@ func setupRoutes(app *fiber.App) {
 func main() {
 
 	// Define Fiber Config
-	config := configs.FiberConfig()
-
+	config := configs.FiberConfig(viewsfs)
 	app := fiber.New(config)
 
 	dbErr := database.InitDatabase()
@@ -74,6 +77,12 @@ func main() {
 		panic(dbErr)
 	}
 
+	app.Use(
+		// Add CORS to each route.
+		cors.New(),
+		// Add simple logger.
+		logger.New(),
+	)
 	setupRoutes(app)
 	app.Listen(os.Getenv("SERVER_URL"))
 }

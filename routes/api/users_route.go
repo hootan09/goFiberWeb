@@ -1,4 +1,4 @@
-package routes
+package api
 
 import (
 	"goV2Web/database"
@@ -18,7 +18,7 @@ import (
 // @Success 200 {object} models.Users
 // @Security ApiKeyAuth
 // @Router /api/v1/user [post]
-func SaveUsers(c *fiber.Ctx) error {
+func SaveUsers_api(c *fiber.Ctx) error {
 	newUser := new(models.Users)
 
 	err := c.BodyParser(newUser)
@@ -55,7 +55,7 @@ func SaveUsers(c *fiber.Ctx) error {
 // @Produce json
 // @Success 200 {array} models.Users
 // @Router /api/v1/users [get]
-func GetAllUsers(c *fiber.Ctx) error {
+func GetAllUsers_api(c *fiber.Ctx) error {
 	result, err := database.GetAllUsers()
 	if err != nil {
 		return c.Status(500).JSON(&fiber.Map{
