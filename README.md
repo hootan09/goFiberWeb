@@ -26,6 +26,12 @@ air init
 air -c .air.toml
 ```
 
+### GCC for windows
+```sh
+# for building sqlite driver in windows
+https://jmeubank.github.io/tdm-gcc/
+```
+
 #### Running
 ```sh
 go mod tidy
