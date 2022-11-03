@@ -16,7 +16,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1/user": {
+        "/api/v1/user": {
             "post": {
                 "security": [
                     {
@@ -64,7 +64,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/users": {
+        "/api/v1/users": {
             "get": {
                 "description": "Get all exists users.",
                 "consumes": [

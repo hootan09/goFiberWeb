@@ -4,7 +4,7 @@
         "contact": {}
     },
     "paths": {
-        "/v1/user": {
+        "/api/v1/user": {
             "post": {
                 "security": [
                     {
@@ -52,7 +52,7 @@
                 }
             }
         },
-        "/v1/users": {
+        "/api/v1/users": {
             "get": {
                 "description": "Get all exists users.",
                 "consumes": [
