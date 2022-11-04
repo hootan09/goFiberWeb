@@ -16,8 +16,10 @@ import (
 // @Tags Token
 // @Accept json
 // @Produce json
+// @Param username body string true "Username"
+// @Param password body string true "Password"
 // @Success 200 {string} status "ok"
-// @Router api/v1/token/new [get]
+// @Router /api/v1/token/new [post]
 func GetNewAccessToken(c *fiber.Ctx) error {
 	admin := &models.Admin{}
 	if err := c.BodyParser(admin); err != nil {
@@ -112,6 +114,15 @@ func GetAllUsers_api(c *fiber.Ctx) error {
 	})
 }
 
+// Restricted func get username from token
+// @Description Get username from token.
+// @Summary get username from token
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Success 200 {string} status "ok"
+// @Security ApiKeyAuth
+// @Router /api/v1/restricted [get]
 func Restricted_api(c *fiber.Ctx) error {
 	user := c.Locals("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)

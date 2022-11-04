@@ -29,8 +29,62 @@ definitions:
         type: string
     type: object
 info:
-  contact: {}
+  contact:
+    email: your@mail.com
+    name: API Support
+  description: This is an auto-generated API Docs.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: API
+  version: "1.0"
 paths:
+  /api/v1/restricted:
+    get:
+      consumes:
+      - application/json
+      description: Get username from token.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: get username from token
+      tags:
+      - Users
+  /api/v1/token/new:
+    post:
+      consumes:
+      - application/json
+      description: Create a new access token.
+      parameters:
+      - description: Username
+        in: body
+        name: username
+        required: true
+        schema:
+          type: string
+      - description: Password
+        in: body
+        name: password
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: create a new access token
+      tags:
+      - Token
   /api/v1/user:
     post:
       consumes:
@@ -78,19 +132,9 @@ paths:
       summary: get all exists users
       tags:
       - Users
-  /v1/token/new:
-    get:
-      consumes:
-      - application/json
-      description: Create a new access token.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ok
-          schema:
-            type: string
-      summary: create a new access token
-      tags:
-      - Token
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization(Bearer)
+    type: apiKey
 swagger: "2.0"
