@@ -78,4 +78,19 @@ paths:
       summary: get all exists users
       tags:
       - Users
+  /v1/token/new:
+    get:
+      consumes:
+      - application/json
+      description: Create a new access token.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: create a new access token
+      tags:
+      - Token
 swagger: "2.0"

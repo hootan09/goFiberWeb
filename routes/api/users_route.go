@@ -3,9 +3,49 @@ package api
 import (
 	"goV2Web/database"
 	"goV2Web/models"
+	"goV2Web/utils"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/golang-jwt/jwt/v4"
 )
+
+// GetNewAccessToken method for create a new access token.
+// @Description Create a new access token.
+// @Summary create a new access token
+// @Tags Token
+// @Accept json
+// @Produce json
+// @Success 200 {string} status "ok"
+// @Router api/v1/token/new [get]
+func GetNewAccessToken(c *fiber.Ctx) error {
+	admin := &models.Admin{}
+	if err := c.BodyParser(admin); err != nil {
+		return err
+	}
+	if admin.Username != os.Getenv("ADMIN_USERNAME") || admin.Password != os.Getenv("ADMIN_PASSWORD") {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"success": false,
+			"message": "invalid username or password!",
+		})
+	}
+
+	// Generate a new Access token.
+	token, err := utils.GenerateNewAccessToken(admin)
+	if err != nil {
+		// Return status 500 and token generation error.
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"sucess":  true,
+			"message": err.Error(),
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"success":      true,
+		"message":      nil,
+		"access_token": token,
+	})
+}
 
 // SaveUsers func for creates a new user.
 // @Description Create a new user.
@@ -70,4 +110,11 @@ func GetAllUsers_api(c *fiber.Ctx) error {
 		"message": "",
 		"data":    result,
 	})
+}
+
+func Restricted_api(c *fiber.Ctx) error {
+	user := c.Locals("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	username := claims["username"].(string)
+	return c.SendString("Welcome " + username)
 }

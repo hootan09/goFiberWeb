@@ -89,6 +89,29 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/v1/token/new": {
+            "get": {
+                "description": "Create a new access token.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "create a new access token",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {

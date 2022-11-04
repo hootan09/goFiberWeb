@@ -9,6 +9,8 @@ go get -u gorm.io/driver/sqlite
 go get -u github.com/gofiber/template
 go get -u github.com/google/uuid
 go get -u github.com/joho/godotenv
+go get -u github.com/golang-jwt/jwt/v4
+go get -u github.com/gofiber/jwt/v3
 ```
 
 #### Swagger
@@ -56,7 +58,7 @@ TODOS:
 - [X] Template engine (.html)
 - [X] embed statics files
 - [X] session for web auth with cookie expiration
-- [ ] JWT middleware & utils (generator)
+- [#] JWT middleware & utils (generator)
 - [ ] validators
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)

@@ -4,9 +4,10 @@ import (
 	"embed"
 	"goV2Web/configs"
 	"goV2Web/database"
+	"goV2Web/middleware"
 	api_routes "goV2Web/routes/api"
 	web_routes "goV2Web/routes/web"
-	"os"
+	"goV2Web/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -16,6 +17,7 @@ import (
 
 	"github.com/gofiber/swagger" // swagger handler
 
+	// jwtware "github.com/gofiber/jwt"
 	_ "github.com/joho/godotenv/autoload" // load .env file automatically
 )
 
@@ -40,17 +42,24 @@ func main() {
 		logger.New(),
 	)
 	setupRoutes(app)
-	app.Listen(os.Getenv("SERVER_URL"))
+	// app.Listen(os.Getenv("SERVER_URL"))
+	utils.StartServer(app)
 }
 
 func setupRoutes(app *fiber.App) {
 
 	app.Static("/", "./views/public")
 
+	// JWT Middleware
+	// app.Use(jwtware.New(jwtware.Config{
+	// 	SigningKey: []byte(os.Getenv("JWT_SECRET_KEY")),
+	// }))
 	// Api routes
 	api := app.Group("/api/v1")
 	api.Get("/users", api_routes.GetAllUsers_api)
 	api.Post("/user", api_routes.SaveUsers_api)
+	api.Post("/token/new", api_routes.GetNewAccessToken)
+	api.Get("/restricted", middleware.JWTProtected(), api_routes.Restricted_api)
 
 	// Template Engine
 	web := app.Group("/")
