@@ -55,7 +55,7 @@ TODOS:
 - [X] air livereload
 - [X] Template engine (.html)
 - [X] embed statics files
-- [ ] Cookie session for web auth 
+- [X] session for web auth with cookie expiration
 - [ ] JWT middleware & utils (generator)
 - [ ] validators
 - [ ] /ws Websocket
