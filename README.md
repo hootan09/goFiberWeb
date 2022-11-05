@@ -58,7 +58,7 @@ TODOS:
 - [X] Template engine (.html)
 - [X] embed statics files
 - [X] session for web auth with cookie expiration
-- [#] JWT middleware & utils (generator)
+- [X] JWT middleware & utils (generator)
 - [ ] validators
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)
