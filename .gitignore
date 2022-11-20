@@ -7,7 +7,7 @@
 
 # Dev build
 build/
-tmp/
+# tmp/
 
 # Test
 *.out

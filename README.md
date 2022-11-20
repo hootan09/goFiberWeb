@@ -62,3 +62,6 @@ TODOS:
 - [ ] validators
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)
+- [ ] not embed template in dev mode
+- [ ] speedup compile time
+- [ ] swagger fix annotations

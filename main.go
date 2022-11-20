@@ -35,6 +35,7 @@ var viewsfs embed.FS
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization(Bearer)
+// @host localhost:3000
 // @BasePath /api
 func main() {
 
