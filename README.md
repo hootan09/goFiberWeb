@@ -60,7 +60,7 @@ make swag
 - [X] embed statics files
 - [X] session for web auth with cookie expiration
 - [X] JWT middleware & utils (generator)
-- [ ] validators
+- [ ] validators [go-playground validator](https://github.com/go-playground/validator)
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)
 - [ ] not embed template in dev mode
