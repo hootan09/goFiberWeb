@@ -44,7 +44,8 @@ make dev
 make swag
 ```
 
-TODOS:
+
+#### TODOS: (some sample code in tmp folder)
 
 - [X] Swagger automatic documention **$make swag**
 - [X] sqlite3 database
