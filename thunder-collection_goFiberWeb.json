@@ -1,0 +1,96 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "goTicket",
+    "dateExported": "2023-05-26T16:01:47.917Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "45addece-29c0-43c2-bc82-8d3d7c120f26",
+            "colId": "6b6c0f26-e59f-4b6e-a62a-1d67fa936915",
+            "containerId": "",
+            "name": "Get All Users",
+            "url": "localhost:3000/api/v1/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-26T15:40:49.998Z",
+            "modified": "2023-05-26T15:41:41.858Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ad08065a-2248-4a64-9f8a-db1785b0ade2",
+            "colId": "6b6c0f26-e59f-4b6e-a62a-1d67fa936915",
+            "containerId": "",
+            "name": "Add New User",
+            "url": "localhost:3000/api/v1/user",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-05-26T15:40:49.999Z",
+            "modified": "2023-05-26T15:46:36.827Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjg1MTE5NDkxLCJ1c2VybmFtZSI6ImFkbWluIn0.6Ee80yJ3hIQElesKls_qwA-9wDTPlrLy79l0p4CazZ0"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"admin@admin.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4e053451-567f-4695-963f-75400a6bf01b",
+            "colId": "6b6c0f26-e59f-4b6e-a62a-1d67fa936915",
+            "containerId": "",
+            "name": "New Token for Admin",
+            "url": "localhost:3000/api/v1/token/new",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-26T15:42:55.704Z",
+            "modified": "2023-05-26T15:44:46.094Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f8f37f01-3ca4-4c31-9b7c-fa8f41af6aa1",
+            "colId": "6b6c0f26-e59f-4b6e-a62a-1d67fa936915",
+            "containerId": "",
+            "name": "upload",
+            "url": "localhost:3000/api/v1/upload",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-05-26T15:47:40.728Z",
+            "modified": "2023-05-26T15:55:17.460Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjg1MTE5NDkxLCJ1c2VybmFtZSI6ImFkbWluIn0.6Ee80yJ3hIQElesKls_qwA-9wDTPlrLy79l0p4CazZ0"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [],
+                "files": [
+                    {
+                        "name": "file",
+                        "value": "c:\\Users\\niki\\Pictures\\kalapi.png"
+                    }
+                ]
+            },
+            "tests": []
+        }
+    ]
+}

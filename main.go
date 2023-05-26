@@ -50,10 +50,13 @@ func main() {
 
 	app.Use(
 		// Add CORS to each route.
-		cors.New(),
+		cors.New(cors.Config{
+			AllowCredentials: true,
+		}),
 		// Add simple logger.
 		logger.New(),
 	)
+
 	setupRoutes(app)
 	// app.Listen(os.Getenv("SERVER_URL"))
 	utils.StartServer(app)
@@ -73,6 +76,7 @@ func setupRoutes(app *fiber.App) {
 	api.Post("/user", api_routes.SaveUsers_api)
 	api.Post("/token/new", api_routes.GetNewAccessToken)
 	api.Get("/restricted", middleware.JWTProtected(), api_routes.Restricted_api)
+	api.Post("/upload", middleware.JWTProtected(), api_routes.Upload_api )
 
 	// Template Engine
 	web := app.Group("/")
@@ -115,6 +119,8 @@ func setupRoutes(app *fiber.App) {
 				"message": "sorry, endpoint is not found",
 				"data":    nil,
 			})
+			//for frontEnd
+			// return c.Status(fiber.StatusNotFound).SendFile("./public/404.html")
 		},
 	)
 }

@@ -8,6 +8,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
+
+	"fmt"
 )
 
 // GetNewAccessToken method for create a new access token.
@@ -28,7 +30,7 @@ func GetNewAccessToken(c *fiber.Ctx) error {
 	if admin.Username != os.Getenv("ADMIN_USERNAME") || admin.Password != os.Getenv("ADMIN_PASSWORD") {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 			"success": false,
-			"message": "invalid username or password!",
+			"message": "invalid username password!",
 		})
 	}
 
@@ -128,4 +130,36 @@ func Restricted_api(c *fiber.Ctx) error {
 	claims := user.Claims.(jwt.MapClaims)
 	username := claims["username"].(string)
 	return c.SendString("Welcome " + username)
+}
+
+// upload func upload single file to server
+// @Description upload single file to server.
+// @Summary upload single file to server
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Success 200 {string} status "ok"
+// @Security ApiKeyAuth
+// @Router /api/v1/upload [post]
+func Upload_api(c *fiber.Ctx) error {
+	form, err := c.MultipartForm()
+
+	if err != nil {
+		return err
+	}
+
+	files := form.File["file"]
+	filename := ""
+
+	for _, file := range files {
+		filename = file.Filename
+		fmt.Println(filename)
+		if err := c.SaveFile(file, "./views/public/uploads/"+filename); err != nil {
+			return err
+		}
+	}
+
+	return c.JSON(fiber.Map{
+		"url": "./uploads/" + filename,
+	})
 }

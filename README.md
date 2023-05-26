@@ -34,6 +34,11 @@ air -c .air.toml
 https://jmeubank.github.io/tdm-gcc/
 ```
 
+### Disable GoProxy
+```sh
+export GOPROXY=direct
+```
+
 #### Running
 ```sh
 go mod tidy
@@ -60,9 +65,11 @@ make swag
 - [X] embed statics files
 - [X] session for web auth with cookie expiration
 - [X] JWT middleware & utils (generator)
+- [X] File Uploader
 - [ ] validators [go-playground validator](https://github.com/go-playground/validator)
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)
 - [ ] not embed template in dev mode
 - [ ] speedup compile time
 - [ ] swagger fix annotations
+- [ ] CSV Downloader
