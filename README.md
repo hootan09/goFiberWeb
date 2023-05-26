@@ -36,7 +36,10 @@ https://jmeubank.github.io/tdm-gcc/
 
 ### Disable GoProxy
 ```sh
+#Linx
 export GOPROXY=direct
+# windows(cmd)
+set GOPROXY=direct
 ```
 
 #### Running
