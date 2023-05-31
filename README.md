@@ -32,6 +32,8 @@ air -c .air.toml
 ```sh
 # for building sqlite driver in windows
 https://jmeubank.github.io/tdm-gcc/
+go env -w CGO_ENABLED=1
+go install github.com/mattn/go-sqlite3
 ```
 
 ### Disable GoProxy

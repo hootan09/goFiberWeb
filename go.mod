@@ -3,30 +3,39 @@ module goV2Web
 go 1.18
 
 require (
+	github.com/go-playground/validator/v10 v10.14.0
 	github.com/gofiber/fiber/v2 v2.39.0
+	github.com/gofiber/jwt/v3 v3.3.3
+	github.com/golang-jwt/jwt/v4 v4.4.2
+	github.com/google/uuid v1.3.0
+	github.com/koddr/tutorial-go-fiber-rest-api v0.0.0-20220607093130-77d1734557a6
+	github.com/stretchr/testify v1.8.3
 	gorm.io/driver/sqlite v1.4.3
 	gorm.io/gorm v1.24.0
 )
 
 require (
-	github.com/bep/godartsass v0.16.0 // indirect
-	github.com/bep/golibsass v1.1.1 // indirect
-	github.com/cli/safeexec v1.0.1 // indirect
-	github.com/cosmtrek/air v1.43.0 // indirect
-	github.com/creack/pty v1.1.18 // indirect
-	github.com/fatih/color v1.15.0 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
-	github.com/gofiber/jwt/v3 v3.3.3 // indirect
-	github.com/gohugoio/hugo v0.112.3 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/go-playground/locales v0.14.1 // indirect
+	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
-	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
-	github.com/imdario/mergo v0.3.15 // indirect
-	github.com/pelletier/go-toml v1.9.5 // indirect
-	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
-	github.com/spf13/afero v1.9.5 // indirect
-	github.com/tdewolff/parse/v2 v2.6.6 // indirect
+	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
+	github.com/jackc/pgconn v1.11.0 // indirect
+	github.com/jackc/pgio v1.0.0 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgproto3/v2 v2.2.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
+	github.com/jackc/pgtype v1.10.0 // indirect
+	github.com/jackc/pgx/v4 v4.15.0 // indirect
+	github.com/jmoiron/sqlx v1.3.5 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
+	github.com/leodido/go-urn v1.2.4 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/rogpeppe/go-internal v1.10.1-0.20230508101108-a4f6fabd84c5 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
-	google.golang.org/protobuf v1.30.0 // indirect
 )
 
 require (
