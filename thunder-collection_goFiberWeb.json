@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "goTicket",
-    "dateExported": "2023-05-26T16:01:47.917Z",
+    "dateExported": "2023-05-31T17:08:49.395Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -28,7 +28,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-05-26T15:40:49.999Z",
-            "modified": "2023-05-26T15:46:36.827Z",
+            "modified": "2023-05-31T13:49:10.721Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -38,7 +38,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"admin@admin.com\"\n}",
+                "raw": "{\n  \"email\": \"admin3@admin.com\"\n}",
                 "form": []
             },
             "tests": []
@@ -90,6 +90,25 @@
                     }
                 ]
             },
+            "tests": []
+        },
+        {
+            "_id": "7cfe2c8e-e158-4569-b3dc-8bbf3e3306a1",
+            "colId": "6b6c0f26-e59f-4b6e-a62a-1d67fa936915",
+            "containerId": "",
+            "name": "Download CSV",
+            "url": "localhost:3000/api/v1/csv",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-05-31T13:28:04.229Z",
+            "modified": "2023-05-31T13:30:36.808Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjg1NTQzMzUxLCJ1c2VybmFtZSI6ImFkbWluIn0.Xmg39SnKdMgAkiDaTBMlrW79U9itfSXVK3SoSAUa8zQ"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
