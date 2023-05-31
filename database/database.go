@@ -23,12 +23,11 @@ func InitDatabase() error {
 // This method create new User in Database
 func CreateUser(email string, active bool) (models.Users, error) {
 	var newUsers = models.Users{Email: email, Active: active}
-
 	db, err := gorm.Open(sqlite.Open(DataBaseName), &gorm.Config{})
 	if err != nil {
 		return newUsers, err
 	}
-	db.Create(&models.Users{})
+	db.Create(&newUsers)
 
 	return newUsers, nil
 }

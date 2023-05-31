@@ -76,7 +76,8 @@ func setupRoutes(app *fiber.App) {
 	api.Post("/user", api_routes.SaveUsers_api)
 	api.Post("/token/new", api_routes.GetNewAccessToken)
 	api.Get("/restricted", middleware.JWTProtected(), api_routes.Restricted_api)
-	api.Post("/upload", middleware.JWTProtected(), api_routes.Upload_api )
+	api.Post("/upload", middleware.JWTProtected(), api_routes.Upload_api)
+	api.Get("/csv", middleware.JWTProtected(), api_routes.CSV_api)
 
 	// Template Engine
 	web := app.Group("/")

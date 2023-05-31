@@ -71,12 +71,13 @@ make swag
 - [X] session for web auth with cookie expiration
 - [X] JWT middleware & utils (generator)
 - [X] File Uploader
-- [ ] CSV Downloader (get all users)
+- [X] CSV Downloader (get all users)
 - [ ] validators [go-playground validator](https://github.com/go-playground/validator)
 - [ ] /ws Websocket
 - [ ] workFlow (goReleaser)
 - [ ] not embed template in dev mode
-- [ ] bug in get all users (email not shown)
+- [X] bug in get all users (email not shown)
 - [ ] speedup compile time (sqlite in windows)
 - [ ] swagger fix annotations
 - [ ] make two stage DockerFile (builder & production)
+- [ ] database Constans with one connection for all route

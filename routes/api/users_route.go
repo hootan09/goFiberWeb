@@ -1,15 +1,16 @@
 package api
 
 import (
+	"encoding/csv"
+	"fmt"
 	"goV2Web/database"
 	"goV2Web/models"
 	"goV2Web/utils"
 	"os"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
-
-	"fmt"
 )
 
 // GetNewAccessToken method for create a new access token.
@@ -162,4 +163,61 @@ func Upload_api(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"url": "./uploads/" + filename,
 	})
+}
+
+// csv func Download csv
+// @Description Download csv
+// @Summary Download csv
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Success 200 {string} status "ok"
+// @Security ApiKeyAuth
+// @Router /api/v1/upload [post]
+func CSV_api(c *fiber.Ctx) error {
+	filePath := "./views/public/uploads/users.csv"
+
+	if err := CreateFile(filePath); err != nil {
+		return err
+	}
+
+	return c.Download(filePath)
+}
+
+func CreateFile(filePath string) error {
+	file, err := os.Create(filePath)
+
+	if err != nil {
+		return err
+	}
+
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	users, err := database.GetAllUsers()
+	if err != nil {
+		return err
+	}
+
+	writer.Write([]string{
+		"ID", "Email", "Active", "CreatedAt", "UpdatedAt",
+	})
+
+	for _, user := range users {
+		data := []string{
+			strconv.Itoa(int(user.ID)),
+			user.Email,
+			strconv.FormatBool(user.Active),
+			"",
+			user.UpdatedAt.String(),
+		}
+
+		if err := writer.Write(data); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
